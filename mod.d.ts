@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2025 The Stdlib Authors.
@@ -16,18 +16,11 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var strided = require( '@stdlib/stats-strided-nanmeanwd' ).ndarray;
-
-
-// MAIN //
+import { typedndarray } from '@stdlib/types/ndarray';
 
 /**
 * Computes the arithmetic mean of a one-dimensional ndarray, ignoring `NaN` values and using Welford's algorithm.
@@ -38,8 +31,8 @@ var strided = require( '@stdlib/stats-strided-nanmeanwd' ).ndarray;
 *
 *     -   a one-dimensional input ndarray.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {number} arithmetic mean
+* @param arrays - array-like object containing ndarrays
+* @returns arithmetic mean
 *
 * @example
 * var vector = require( '@stdlib/ndarray-vector-ctor' );
@@ -49,12 +42,9 @@ var strided = require( '@stdlib/stats-strided-nanmeanwd' ).ndarray;
 * var v = nanmeanwd( [ x ] );
 * // returns 2.0
 */
-function nanmeanwd( arrays ) {
-	var x = arrays[ 0 ];
-	return strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ) ); // eslint-disable-line max-len
-}
+declare function nanmeanwd( arrays: [ typedndarray<number> ] ): number;
 
 
 // EXPORTS //
 
-module.exports = nanmeanwd;
+export = nanmeanwd;
